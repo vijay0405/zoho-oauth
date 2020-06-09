@@ -23,6 +23,21 @@ router.get('/grant/token', (req, res) => {
 
 router.get('/get/tokens/:grant', (req, res) => {
     console.log('/get/tokens/:grant');
+    const urlForAccesToken = `https://accounts.zoho.in/oauth/v2/token` +
+        `?code=${req.params.grant}` +
+        `&client_id=${config.clientId}` +
+        `&client_secret=${config.clientSecret}` +
+        `&redirect_uri=${config.redirectUri}` +
+        `&grant_type=authorization_code` +
+        `&scope=${config.scope}`
+
+    request.post({uri: urlForAccesToken}, (err, response, body)=>{
+        if(err) {
+            res.send(err);
+        } else {
+            res.json(JSON.parse(response.body));
+        }
+    })
 });
 
 router.get('/grant/token/refresh', (req, res) => {
