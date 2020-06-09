@@ -1,0 +1,11 @@
+{
+  "name": "zoho-oauth",
+  "version": "1.0.1",
+  "description": "Tool for generating the access token for using zoho api's ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vijay",
+  "license": "ISC"
+}
