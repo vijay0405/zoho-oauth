@@ -40,8 +40,22 @@ router.get('/get/tokens/:grant', (req, res) => {
     })
 });
 
-router.get('/grant/token/refresh', (req, res) => {
+router.get('/get/token/:refresh_token', (req, res) => {
     console.log('/grant/token/refresh');
+    const urlForAccesToken = `https://accounts.zoho.in/oauth/v2/token` +
+        `?refresh_token=${req.params.refresh_token}&` +
+        `&client_id=${config.clientId}` +
+        `&client_secret=${config.clientSecret}` +
+        `&grant_type=refresh_token`
+
+        request.post({uri: urlForAccesToken}, (err, response, body)=>{
+            if(err) {
+                res.send(err);
+            } else {
+                res.json(JSON.parse(response.body));
+            }
+        })
+
 });
 
 module.exports = router;
