@@ -24,3 +24,6 @@ response: {"access_token": '$access_token',"refresh_token":'$refresh_token',"api
 http://localhost:3005/get/token/:refresh_token
 
 
+**4. Store the Refresh token so that it can be used for fetching Access token on expiry and grant token is generated only in the first step**
+
+
